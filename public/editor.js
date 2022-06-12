@@ -63,8 +63,9 @@ function loadContents(identifier) {
                     cmEditor.setValue(toml)
                     setStatus(`loaded: identifier "${identifier}"`)
                 })
+            } else {
+                throw new Error(`could not load: ${identifier}`)
             }
-            throw new Error(`could not load: ${identifier}`)
         })
         .catch((err) => {
             setStatus(err)
