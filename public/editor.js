@@ -72,10 +72,10 @@ function loadContents(identifier) {
         })
 }
 
-function saveContents(content) {
+function saveContents(identifier) {
     let respBody = []
     respBody.push("ed=" + encodeURIComponent(cmEditor.getValue()))
-    fetch(`/rw/save/${content}`, {
+    fetch(`/rw/save/${identifier}`, {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
