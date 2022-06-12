@@ -1,9 +1,18 @@
+const THEME_DARK = "dark"
+const THEME_LIGHT = "light"
+
 const cmEditor = CodeMirror.fromTextArea(document.getElementById("ed"), {
     lineNumbers: true,
     theme: "mdn-like",
     mode: "toml",
 })
-document.getElementById("edmLight").checked = true
+if (getCookie("appearance") === THEME_DARK) {
+    document.getElementById("edmDark").checked = true
+    changeEditorAppearance(THEME_DARK)
+} else {
+    document.getElementById("edmLight").checked = true
+    changeEditorAppearance(THEME_LIGHT)
+}
 
 function clearStatus() {
     document.getElementById("status").innerText = ""
@@ -14,11 +23,35 @@ function setStatus(message) {
     setTimeout(clearStatus, 5000)
 }
 
+function getCookie(cookieName) {
+    let r
+    try {
+        r = document.cookie
+            .split("; ")
+            .find((row) => row.startsWith(`${cookieName}=`))
+            .split("=")[1]
+    } catch (err) {
+        console.log(`not found: cookie ${cookieName}`)
+        r = ""
+    }
+    return r
+}
+
+function setCookie(cookieName, cookieValue) {
+    document.cookie = `${cookieName}=${cookieValue}; SameSite=Strict`
+}
+
 function changeEditorAppearance(style) {
-    if (style === "dark") {
+    if (style === THEME_DARK) {
         cmEditor.setOption("theme", "darcula")
+        document.body.style.backgroundColor = "#111"
+        document.body.style.color = "#fff"
+        setCookie("appearance", THEME_DARK)
     } else {
         cmEditor.setOption("theme", "mdn-like")
+        document.body.style.backgroundColor = "#fff"
+        document.body.style.color = "#000"
+        setCookie("appearance", THEME_LIGHT)
     }
 }
 
