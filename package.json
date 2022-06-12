@@ -1,0 +1,22 @@
+{
+    "name": "cm-editor-test",
+    "version": "1.0.0",
+    "description": "Editing TOML with CodeMirror 5",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "fmt": "npx prettier -w ."
+    },
+    "keywords": [
+        "codemirror"
+    ],
+    "author": "Prasenjeet Dutta",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "codemirror": "^5.65.5",
+        "express": "^4.18.1"
+    },
+    "devDependencies": {
+        "prettier": "^2.6.2"
+    }
+}

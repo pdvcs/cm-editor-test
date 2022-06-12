@@ -1,0 +1,42 @@
+<html lang="en">
+    <head>
+        <title>cm-demo</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="lib/codemirror.js"></script>
+        <script src="mode/toml/toml.js"></script>
+        <link rel="stylesheet" href="lib/codemirror.css" />
+        <link rel="stylesheet" href="theme/darcula.css" />
+        <link rel="stylesheet" href="theme/mdn-like.css" />
+        <style>
+            body {
+                font-family: Helvetica, Arial, sans-serif;
+            }
+            #status {
+                background-color: yellow;
+                color: black;
+                margin: 0px 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <textarea id="ed"></textarea>
+        <p>&nbsp;</p>
+        <input id="btnLoad" type="button" value="Load" onclick="loadContents('sample')" />
+        <input id="btnSave" type="button" value="Save" onclick="saveContents('user-written')" />
+        &nbsp;&nbsp;
+        <span
+            >Mode:
+            <input type="radio" id="edmLight" name="edm" value="Light" onclick="changeEditorAppearance('light')" />
+            <label for="edmLight">Light</label>
+
+            <input type="radio" id="edmDark" name="edm" value="Dark" onclick="changeEditorAppearance('dark')" />
+            <label for="edmDark">Dark</label>
+        </span>
+        &nbsp;&nbsp;<span id="status"></span>
+
+        <script src="editor.js"></script>
+    </body>
+</html>
